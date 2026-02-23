@@ -1,0 +1,37 @@
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; font-family: 'Poppins', system-ui, sans-serif; }
+body {
+  background: linear-gradient(180deg,#ffe6f0 0%, #ffd7ec 50%, #ffc6e6 100%);
+  overflow:hidden;
+  color:#fff;
+}
+#enter-screen{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.2); backdrop-filter: blur(4px); z-index:50; }
+#enter-btn{ background: linear-gradient(90deg,#ff7bb3,#ff4da6); border:none; padding:20px 40px; font-size:28px; color:white; border-radius:12px; cursor:pointer; box-shadow:0 8px 20px rgba(255,77,166,0.25); }
+#main.hidden{ display:none; }
+#confetti-canvas{ position:fixed; inset:0; pointer-events:none; z-index:40; }
+.message{ position:fixed; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; z-index:30; padding:20px; }
+.message h1{ font-family:'Dancing Script', cursive; font-size:64px; margin:0; color:#fff; text-shadow:0 4px 18px rgba(255,105,180,0.45); }
+.message p{ margin-top:12px; font-size:20px; color:#fff; opacity:0.95; }
+
+#floating-container{ position:fixed; inset:0; pointer-events:none; z-index:20; }
+.floating {
+  position:absolute; left:50%; top:100%; transform:translateX(-50%) translateY(0);
+  animation:floatUp linear forwards;
+  will-change:transform,opacity;
+}
+.heart{ font-size:28px; color:#ff5aa7; filter: drop-shadow(0 6px 8px rgba(255,85,160,0.15)); }
+.butterfly{ font-size:30px; filter: drop-shadow(0 6px 8px rgba(255,85,160,0.12)); }
+@keyframes floatUp{
+  0%{ transform: translateY(0) scale(1) rotate(0); opacity:1 }
+  100%{ transform: translateY(-130vh) scale(1.2) rotate(360deg); opacity:0 }
+}
+
+/* mouse trail hearts */
+.trail-heart{ position:fixed; pointer-events:none; z-index:60; color:#ff5aa7; transform:translate(-50%,-50%); filter: drop-shadow(0 6px 8px rgba(255,85,160,0.12)); animation:trail 900ms cubic-bezier(.2,.9,.2,1) forwards; }
+@keyframes trail{
+  0%{ opacity:1; transform:translate(-50%,-50%) scale(1); }
+  100%{ opacity:0; transform:translate(-50%,-140%) scale(1.6); }
+}
+
+/* small responsive tweaks */
+@media (max-width:600px){ .message h1{ font-size:40px } #enter-btn{ font-size:22px; padding:16px 28px } }
